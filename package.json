@@ -3,7 +3,7 @@
   "displayName": "Hurl Runner",
   "publisher": "MateuszDrewniak",
   "description": "Makes it easy to run hurl files directly through VSCode",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "engines": {
     "vscode": "^1.91.0"
   },
@@ -26,6 +26,14 @@
         }
       },
       {
+        "command": "hurl-runner.runFileInteractively",
+        "title": "Hurl Runner: Run file interactively",
+        "icon": {
+          "light": "resources/light/run-file.svg",
+          "dark": "resources/dark/run-file.svg"
+        }
+      },
+      {
         "command": "hurl-runner.chooseEnv",
         "title": "Hurl Runner: Choose Env"
       }
@@ -35,6 +43,12 @@
         {
           "command": "hurl-runner.runFile",
           "title": "Hurl Runner: Run file",
+          "group": "navigation",
+          "when": "resourceLangId == hurl && !isInDiffEditor"
+        },
+        {
+          "command": "hurl-runner.runFileInteractively",
+          "title": "Hurl Runner: Run file interactively",
           "group": "navigation",
           "when": "resourceLangId == hurl && !isInDiffEditor"
         }
