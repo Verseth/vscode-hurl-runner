@@ -1,0 +1,76 @@
+{
+  "name": "hurl-runner",
+  "displayName": "hurl-runner",
+  "description": "Makes it easy to run hurl files directly through VSCode",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.91.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:hurl"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "hurl-runner.runFile",
+        "title": "Hurl Runner: Run file",
+        "icon": {
+          "light": "resources/light/run-file.svg",
+          "dark": "resources/dark/run-file.svg"
+        }
+      },
+      {
+        "command": "hurl-runner.chooseEnv",
+        "title": "Hurl Runner: Choose Env"
+      }
+    ],
+    "menus": {
+      "editor/title/run": [
+        {
+          "command": "hurl-runner.runFile",
+          "title": "Hurl Runner: Run file",
+          "group": "navigation",
+          "when": "resourceLangId == hurl && !isInDiffEditor"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Hurl Runner",
+      "properties": {
+        "hurl-runner.commandLineArguments": {
+          "type": "string",
+          "default": "-i",
+          "description": "Configure command line arguments that will be forwarded to hurl. Read more here: https://hurl.dev/docs/manual.html#options"
+        },
+        "hurl-runner.envDir": {
+          "type": "string",
+          "default": "hurl/env",
+          "description": "Configure the directory where Hurl Runner will be looking for env files. Env files are provided to hurl with the `--variables-file` option. Read more: https://hurl.dev/docs/manual.html#variables-file"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.91.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.11.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.4.0"
+  }
+}
