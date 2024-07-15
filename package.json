@@ -12,6 +12,7 @@
   "activationEvents": [
     "onLanguage:hurl"
   ],
+  "icon": "resources/icon.png",
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -54,6 +55,7 @@
       }
     }
   },
+  "repository": "https://github.com/Verseth/vscode-hurl-runner",
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",

@@ -1,7 +1,6 @@
 # hurl-runner
 
-<img srcset="./resources/hurl-logo.svg" alt="drawing" width="200"/>
-
+![Logo](./resources/icon.png)
 
 Hurl Runner makes it easy to run [hurl](https://hurl.dev/) files through VSCode.
 
