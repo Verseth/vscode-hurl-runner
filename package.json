@@ -1,9 +1,9 @@
 {
   "name": "hurl-runner",
-  "displayName": "hurl-runner",
+  "displayName": "Hurl Runner",
   "publisher": "MateuszDrewniak",
   "description": "Makes it easy to run hurl files directly through VSCode",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.91.0"
   },
