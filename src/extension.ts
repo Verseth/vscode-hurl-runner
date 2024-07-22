@@ -112,7 +112,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 		try {
 			let envs = await vscode.workspace.fs.readDirectory(envDirUri);
-			envNames = envs.map(([name, _]) => name);
+			envNames = envs.map(([name, _]) => name).filter((name) => name.split('.').pop() === "env");
 		} catch {
 			vscode.window.showErrorMessage(`There are no defined environments under ${envDir}`);
 			return;

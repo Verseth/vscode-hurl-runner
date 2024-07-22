@@ -3,7 +3,7 @@
   "displayName": "Hurl Runner",
   "publisher": "MateuszDrewniak",
   "description": "Makes it easy to run hurl files directly through VSCode",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "engines": {
     "vscode": "^1.91.0"
   },
@@ -59,7 +59,7 @@
       "properties": {
         "hurl-runner.commandLineArguments": {
           "type": "string",
-          "default": "-i",
+          "default": "-i --error-format long",
           "description": "Configure command line arguments that will be forwarded to hurl. Read more here: https://hurl.dev/docs/manual.html#options"
         },
         "hurl-runner.envDir": {
