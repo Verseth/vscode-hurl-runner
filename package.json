@@ -66,6 +66,11 @@
           "type": "string",
           "default": "hurl/env",
           "description": "Configure the directory where Hurl Runner will be looking for env files. Env files are provided to hurl with the `--variables-file` option. Read more: https://hurl.dev/docs/manual.html#variables-file"
+        },
+        "hurl-runner.nextCommand": {
+          "type": "string",
+          "default": "",
+          "description": "put the output of the hurl result to this command"
         }
       }
     }

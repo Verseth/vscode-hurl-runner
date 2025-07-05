@@ -55,7 +55,7 @@ export function activate(context: vscode.ExtensionContext) {
 		refreshChooseEnvButton();
 	}
 
-	const runFile = (commandLineArguments: string) => {
+	const runFile = (commandLineArguments: string, nextCommand: string) => {
 		let terminal = vscode.window.activeTerminal || vscode.window.createTerminal();
 		let editor = vscode.window.activeTextEditor;
     if(!editor || !editor.document || !editor.document.fileName || editor.document.languageId !== 'hurl') {
@@ -71,6 +71,11 @@ export function activate(context: vscode.ExtensionContext) {
 			command += ` --variables-file ${currentEnvFile}`;
 		}
 
+    // must be last part of the command
+    if (nextCommand) {
+      command += ` ${nextCommand}`;
+    }
+
 		terminal.show();
 		terminal.sendText(command);
 	};
@@ -78,14 +83,15 @@ export function activate(context: vscode.ExtensionContext) {
 	const runFileCommand = vscode.commands.registerCommand('hurl-runner.runFile', () => {
 		let config = vscode.workspace.getConfiguration('hurl-runner');
 		let commandLineArguments: string = config.commandLineArguments;
-		runFile(commandLineArguments);
+    let nextCommand: string = config.nextCommand;
+		runFile(commandLineArguments, nextCommand);
 	});
 	context.subscriptions.push(runFileCommand);
 
 	const runFileInteractivelyCommand = vscode.commands.registerCommand('hurl-runner.runFileInteractively', () => {
 		let config = vscode.workspace.getConfiguration('hurl-runner');
 		let commandLineArguments: string = config.commandLineArguments;
-		runFile(commandLineArguments + " --interactive --very-verbose");
+		runFile(commandLineArguments + " --interactive --very-verbose", "");
 	});
 	context.subscriptions.push(runFileInteractivelyCommand);
 
